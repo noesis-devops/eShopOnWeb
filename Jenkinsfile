@@ -26,8 +26,8 @@ pipeline {
         script {
           def scannerHome = tool 'sonar_msbuild_4.6';
             withSonarQubeEnv('sonarqube') {
-              sh "dotnet tool install --global dotnet-sonarscanner"
-              sh 'dotnet-sonarscanner begin /k:'eShopOnWeb''
+              sh "dotnet tool install --global dotnet-sonarscanner && cat << \EOF >> ~/.bash_profile # Add .NET Core SDK tools export PATH=\"$PATH:/root/.dotnet/tools\" EOF"
+              sh 'dotnet-sonarscanner begin /k:\"eShopOnWeb\"'
               sh "dotnet build eShopOnWeb.sln"
               sh "dotnet-sonarscanner end"
           }
