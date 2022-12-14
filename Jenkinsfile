@@ -36,20 +36,5 @@ pipeline {
         }
       }
     }
-     stage('Quality Gate') {
-      steps{
-        script {
-        def Result = sh returnStdout: true, script:
-        ''' 
-        curl -s "http://35.241.242.160:9000/api/qualitygates/project_status?projectKey=eShopOnWeb"|cut -d'"' -f6|wc -c ;
-        '''
-        if ( env.Result <= "3" ){
-        echo 'Passed'
-        } else{
-        currentBuild.result = 'ABORTED'
-            } 
-        }
-    }
-}
   }
 }
