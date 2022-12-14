@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/dotnet-architecture/eShopOnWeb/workflows/eShopOnWeb%20Build%20and%20Test/badge.svg)](https://github.com/dotnet-architecture/eShopOnWeb/actions)
+[![Quality gate](http://35.241.242.160:9000/api/project_badges/quality_gate?project=eShopOnWeb&token=f74a448cd842c754c94a55ce81cbf0aaa86ec80f)](http://35.241.242.160:9000/dashboard?id=eShopOnWeb)
 
 # Microsoft eShopOnWeb ASP.NET Core Reference Application
 
