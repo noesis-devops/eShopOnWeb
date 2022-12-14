@@ -27,7 +27,7 @@ pipeline {
           def scannerHome = tool 'sonar_msbuild_4.6';
             withSonarQubeEnv('sonarqube') {
                 nodejs(nodeJSInstallationName: 'node') {
-                  sh "apt update && apt install -y openjdk-17-jre && dotnet tool install --global dotnet-sonarscanner && export PATH=\"$PATH:/root/.dotnet/tools\" && dotnet-sonarscanner begin /k:\"eShopOnWeb\" && dotnet build eShopOnWeb.sln && dotnet-sonarscanner end -d:sonar.qualitygate.wait=true"
+                  sh "apt update && apt install -y openjdk-17-jre && dotnet tool install --global dotnet-sonarscanner && export PATH=\"$PATH:/root/.dotnet/tools\" && dotnet-sonarscanner begin /k:\"eShopOnWeb\" && dotnet build eShopOnWeb.sln && dotnet-sonarscanner end"
                   //sh 'dotnet-sonarscanner begin /k:\"eShopOnWeb\"'
                   //sh "dotnet build eShopOnWeb.sln"
                   //sh "dotnet-sonarscanner end"
