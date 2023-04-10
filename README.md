@@ -1,5 +1,6 @@
 [![Quality gate](http://35.241.242.160:9000/api/project_badges/quality_gate?project=eShopOnWeb&token=f74a448cd842c754c94a55ce81cbf0aaa86ec80f)](http://35.241.242.160:9000/dashboard?id=eShopOnWeb)
 
+
 # Microsoft eShopOnWeb ASP.NET Core Reference Application
 
 Sample ASP.NET Core reference application, powered by Microsoft, demonstrating a single-process (monolithic) application architecture and deployment model. If you're new to .NET development, read the [Getting Started for Beginners](https://github.com/dotnet-architecture/eShopOnWeb/wiki/Getting-Started-for-Beginners) guide.
