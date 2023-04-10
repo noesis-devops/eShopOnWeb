@@ -1,4 +1,4 @@
-[![Quality gate](http://35.241.242.160:9000/api/project_badges/quality_gate?project=eShopOnWeb&token=f74a448cd842c754c94a55ce81cbf0aaa86ec80f)](http://35.241.242.160:9000/dashboard?id=eShopOnWeb)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=noesis-devops_eShopOnWeb&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=noesis-devops_eShopOnWeb)
 
 
 # Microsoft eShopOnWeb ASP.NET Core Reference Application
