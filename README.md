@@ -1,5 +1,11 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=noesis-devops_eShopOnWeb&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=noesis-devops_eShopOnWeb)
 
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=noesis-devops_eShopOnWeb&metric=bugs)](https://sonarcloud.io/summary/new_code?id=noesis-devops_eShopOnWeb)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=noesis-devops_eShopOnWeb&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=noesis-devops_eShopOnWeb)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=noesis-devops_eShopOnWeb&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=noesis-devops_eShopOnWeb)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=noesis-devops_eShopOnWeb&metric=coverage)](https://sonarcloud.io/summary/new_code?id=noesis-devops_eShopOnWeb)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=noesis-devops_eShopOnWeb&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=noesis-devops_eShopOnWeb)
+
 
 # Microsoft eShopOnWeb ASP.NET Core Reference Application
 
