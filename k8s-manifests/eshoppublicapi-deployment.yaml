@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eshoppublicapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eshoppublicapi
+  template:
+    metadata:
+      labels:
+        app: eshoppublicapi
+    spec:
+      containers:
+      - name: eshoppublicapi
+        image: ghcr.io/noesis-devops/eshoppublicapi:main
+        ports:
+        - containerPort: 80
