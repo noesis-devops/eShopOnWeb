@@ -1,0 +1,26 @@
+# sqlserver-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqlserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sqlserver
+  template:
+    metadata:
+      labels:
+        app: sqlserver
+    spec:
+      containers:
+      - name: sqlserver
+        image: mcr.microsoft.com/azure-sql-edge
+        ports:
+        - containerPort: 1433
+        env:
+        - name: SA_PASSWORD
+          value: "@someThingComplicated1234"
+        - name: ACCEPT_EULA
+          value: "Y"
+      # Add other configurations like environment variables, volumes, etc. if needed

@@ -1,0 +1,21 @@
+# eshopwebmvc-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eshopwebmvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eshopwebmvc
+  template:
+    metadata:
+      labels:
+        app: eshopwebmvc
+    spec:
+      containers:
+      - name: eshopwebmvc
+        image: ghcr.io/noesis-devops/eshopwebmvc
+        ports:
+        - containerPort: 80
+      # Add other configurations like environment variables, volumes, etc. if needed
