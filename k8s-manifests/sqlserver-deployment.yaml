@@ -1,26 +1,28 @@
-# sqlserver-deployment.yaml
+# postgresql-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sqlserver
+  name: postgresql
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sqlserver
+      app: postgresql
   template:
     metadata:
       labels:
-        app: sqlserver
+        app: postgresql
     spec:
       containers:
-      - name: sqlserver
-        image: mcr.microsoft.com/azure-sql-edge
+      - name: postgresql
+        image: postgres
         ports:
-        - containerPort: 1433
+        - containerPort: 5432
         env:
-        - name: SA_PASSWORD
-          value: "@someThingComplicated1234"
-        - name: ACCEPT_EULA
-          value: "Y"
+        - name: POSTGRES_PASSWORD
+          value: "someThingComplicated1234"
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_DB
+          value: "mydatabase"
       # Add other configurations like environment variables, volumes, etc. if needed

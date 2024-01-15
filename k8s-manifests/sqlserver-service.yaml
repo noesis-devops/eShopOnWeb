@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sqlserver
+  name: postgresql
 spec:
   selector:
-    app: sqlserver
+    app: postgresql
   ports:
     - protocol: TCP
-      port: 1433
-      targetPort: 1433
+      port: 5432
+      targetPort: 5432
   type: NodePort  # Change this line to expose it as NodePort
