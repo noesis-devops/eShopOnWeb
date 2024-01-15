@@ -10,7 +10,7 @@ public static class Dependencies
 {
     public static void ConfigureServices(IConfiguration configuration, IServiceCollection services)
     {
-        var useOnlyInMemoryDatabase = true;
+        var useOnlyInMemoryDatabase = false;
         if (configuration["UseOnlyInMemoryDatabase"] != null)
         {
             useOnlyInMemoryDatabase = bool.Parse(configuration["UseOnlyInMemoryDatabase"]);
@@ -30,11 +30,11 @@ public static class Dependencies
             // Requires LocalDB which can be installed with SQL Server Express 2016
             // https://www.microsoft.com/en-us/download/details.aspx?id=54284
             services.AddDbContext<CatalogContext>(c =>
-                c.UseSqlServer(configuration.GetConnectionString("CatalogConnection")));
+                c.UseNpgsql(configuration.GetConnectionString("CatalogConnection")));
 
             // Add Identity DbContext
-            services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("IdentityConnection")));
+            services.AddDbContext<AppIdentityDbContext>(c =>
+                c.UseNpgsql(configuration.GetConnectionString("IdentityConnection")));
         }
     }
 }
