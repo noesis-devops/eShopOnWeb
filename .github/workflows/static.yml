@@ -35,13 +35,14 @@ jobs:
         run: mdkir checkout && apt-get -y update && apt-get install -y gnuplot
       - name: Checkout
         uses: actions/checkout@v4
-        path: checkout
+        with:
+          path: checkout
       - name: Download tarball
         run: wget -O gitstats.tar.gz https://github.com/hoxu/gitstats/tarball/master
       - name: Extract tarball to custom directory
-        run: mkdir ../gitstats && mkdir ../results && tar -zxvf gitstats.tar.gz -C ../gitstats --strip-components=1
+        run: mkdir gitstats && mkdir results && tar -zxvf gitstats.tar.gz -C gitstats --strip-components=1
       - name: Execute gitstats
-        run:  ../gitstats/gitstats . ../results
+        run:  ./gitstats/gitstats ./checkout ./results
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
