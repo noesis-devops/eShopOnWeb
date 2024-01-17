@@ -32,7 +32,7 @@ jobs:
       image: python:2.7.18-buster
     steps:
       - name: Install gnuplot
-        run: apt-get install gnuplot
+        run: apt-get update && apt-get install gnuplot
       - name: Checkout
         uses: actions/checkout@v4
       - name: Download tarball
