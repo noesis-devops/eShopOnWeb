@@ -32,17 +32,18 @@ jobs:
       image: python:2.7.18-buster
     steps:
       - name: Install gnuplot
-        run: mkdir checkout && apt-get -y update && apt-get install -y gnuplot
+        run: mkdir eShopOnWeb && apt-get -y update && apt-get install -y gnuplot
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          path: checkout
+          fetch-depth: 0
+          path: eShopOnWeb
       - name: Download tarball
         run: wget -O gitstats.tar.gz https://github.com/hoxu/gitstats/tarball/master
       - name: Extract tarball to custom directory
         run: mkdir gitstats && mkdir results && tar -zxvf gitstats.tar.gz -C gitstats --strip-components=1
       - name: Execute gitstats
-        run:  ./gitstats/gitstats ./checkout ./results
+        run:  ./gitstats/gitstats ./eShopOnWeb ./results
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
