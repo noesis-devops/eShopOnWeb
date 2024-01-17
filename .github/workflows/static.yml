@@ -32,9 +32,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Download tarball
-        run: curl -o gitstats.tar.gz https://github.com/hoxu/gitstats/tarball/master
+        run: wget -O gitstats.tar.gz https://github.com/hoxu/gitstats/tarball/master
       - name: Extract tarball to custom directory
-        run: mkdir gitstats && mkdir results && tar -zxvf gitstats.tar.gz -C gitstats
+        run: mkdir ../gitstats && mkdir ../results && tar -zxvf gitstats.tar.gz -C ../gitstats --strip-components=1
       - name: Execute gitstats
         run:  ./gitstats/gitstats . ./results
       - name: Setup Pages
