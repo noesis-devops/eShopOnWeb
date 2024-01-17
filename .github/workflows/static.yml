@@ -27,7 +27,9 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+    container:
+      image: python:2.7.18-buster
     steps:
       - uses: actions/setup-python@v5
         with:
