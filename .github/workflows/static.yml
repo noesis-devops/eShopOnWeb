@@ -36,7 +36,7 @@ jobs:
       - name: Extract tarball to custom directory
         run: mkdir ../gitstats && mkdir ../results && tar -zxvf gitstats.tar.gz -C ../gitstats --strip-components=1
       - name: Execute gitstats
-        run:  ./gitstats/gitstats . ./results
+        run:  ../gitstats/gitstats . ../results
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
