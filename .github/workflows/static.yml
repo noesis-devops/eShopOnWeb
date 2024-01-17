@@ -31,18 +31,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: actions/checkout@master
-        with:
-          name: https://github.com/hoxu/gitstats.git
+      - name: Download tarball
+        run: curl -o gitstats.tar.gz https://github.com/hoxu/gitstats/tarball/master
+      - name: Extract tarball to custom directory
+        run: mkdir ../gitstats && mkdir ../results && tar -zxvf gitstats.tar.gz -C ../gitstats
       - name: Execute gitstats
-        run:  mkdir results && ./gitstats/gitstats ../ ./results
+        run:  ../gitstats/gitstats ../ ../results
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: './results'
+          path: '../results'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
