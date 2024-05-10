@@ -1,5 +1,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=noesis-devops_eShopOnWeb&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=noesis-devops_eShopOnWeb)
 
+[![Quality Gate Status](https://nominally-game-wolf.ngrok-free.app/api/project_badges/measure?project=noesis-devops_eShopOnWeb_3808a8f2-827e-4428-a803-22ff9b2ddf17&metric=alert_status&token=sqb_5327fd380f8c7a06ca202587f1ea13680de90b1e)](https://nominally-game-wolf.ngrok-free.app/dashboard?id=noesis-devops_eShopOnWeb_3808a8f2-827e-4428-a803-22ff9b2ddf17)
+
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=noesis-devops_eShopOnWeb&metric=bugs)](https://sonarcloud.io/summary/new_code?id=noesis-devops_eShopOnWeb)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=noesis-devops_eShopOnWeb&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=noesis-devops_eShopOnWeb)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=noesis-devops_eShopOnWeb&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=noesis-devops_eShopOnWeb)
