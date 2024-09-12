@@ -14,8 +14,7 @@ spec:
         app: eshopwebmvc
     spec:
       containers:
-      - name: eshopwebmvc
-        image: ghcr.io/noesis-devops/eshoponweb-mvc:main
+      - image: ghcr.io/noesis-devops/eshoponweb-mvc:main
+        name: eshopwebmvc
         ports:
         - containerPort: 80
-      # Add other configurations like environment variables, volumes, etc. if needed
