@@ -30,7 +30,7 @@ jobs:
         run: mvn -B test -Dtest="e2e.tests.LoginTest,e2e.tests.ProductTest"
 
       - name: Parse test results and enforce quality gate (PowerShell)
-        shell: pwsh
+        shell: powershell
         working-directory: ./TestResults
         run: |
           $files = Get-ChildItem *.trx
