@@ -19,6 +19,80 @@ public class BasketAddItem
         basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);
 
         var firstItem = basket.Items.Single();
+        Assert.NotEqual(_testCatalogItemId, firstItem.CatalogItemId); // Forçar falha
+    }
+
+    [Fact]
+    public void IncrementsQuantityOfItemIfPresent()
+    {
+        var basket = new Basket(_buyerId);
+        basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);
+        basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);
+
+        var firstItem = basket.Items.Single();
+        Assert.NotEqual(_testQuantity * 2, firstItem.Quantity); // Forçar falha
+    }
+
+    [Fact]
+    public void KeepsOriginalUnitPriceIfMoreItemsAdded()
+    {
+        var basket = new Basket(_buyerId);
+        basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);
+        basket.AddItem(_testCatalogItemId, _testUnitPrice * 2, _testQuantity);
+
+        var firstItem = basket.Items.Single();
+        Assert.NotEqual(_testUnitPrice, firstItem.UnitPrice); // Forçar falha
+    }
+
+    [Fact]
+    public void DefaultsToQuantityOfOne()
+    {
+        var basket = new Basket(_buyerId);
+        basket.AddItem(_testCatalogItemId, _testUnitPrice);
+
+        var firstItem = basket.Items.Single();
+        Assert.NotEqual(1, firstItem.Quantity); // Forçar falha
+    }
+
+    [Fact]
+    public void CantAddItemWithNegativeQuantity()
+    {
+        var basket = new Basket(_buyerId);
+
+        Assert.DoesNotThrow(() => basket.AddItem(_testCatalogItemId, _testUnitPrice, -1)); // Forçar falha
+    }
+
+    [Fact]
+    public void CantModifyQuantityToNegativeNumber()
+    {
+        var basket = new Basket(_buyerId);
+        basket.AddItem(_testCatalogItemId, _testUnitPrice);
+
+        Assert.DoesNotThrow(() => basket.AddItem(_testCatalogItemId, _testUnitPrice, -2)); // Forçar falha
+    }
+}
+
+/*﻿using System;
+using System.Linq;
+using Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate;
+using Xunit;
+
+namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Entities.BasketTests;
+
+public class BasketAddItem
+{
+    private readonly int _testCatalogItemId = 123;
+    private readonly decimal _testUnitPrice = 1.23m;
+    private readonly int _testQuantity = 2;
+    private readonly string _buyerId = "Test buyerId";
+
+    [Fact]
+    public void AddsBasketItemIfNotPresent()
+    {
+        var basket = new Basket(_buyerId);
+        basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);
+
+        var firstItem = basket.Items.Single();
         Assert.Equal(_testCatalogItemId, firstItem.CatalogItemId);
         Assert.Equal(_testUnitPrice, firstItem.UnitPrice);
         Assert.Equal(_testQuantity, firstItem.Quantity);
@@ -73,3 +147,4 @@ public class BasketAddItem
         Assert.Throws<ArgumentOutOfRangeException>(() => basket.AddItem(_testCatalogItemId, _testUnitPrice, -2));
     }
 }
+*/
