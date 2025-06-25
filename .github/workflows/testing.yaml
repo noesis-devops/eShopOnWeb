@@ -16,9 +16,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
  
-      - name: Build project
-        run: dotnet build --configuration Release
- 
       - name: Run Unit Tests
         run: dotnet test tests/UnitTests/UnitTests.csproj --configuration Release --no-build --logger "trx;LogFileName=unit.trx"
  
