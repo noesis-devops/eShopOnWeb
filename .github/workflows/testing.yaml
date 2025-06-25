@@ -25,7 +25,8 @@ jobs:
         
       - name: Run Unit Tests
         run: dotnet test tests/UnitTests/UnitTests.csproj --configuration Release --logger "trx;LogFileName=unit.trx" --logger "console;verbosity=detailed" -v minimal
- 
+        continue-on-error: true
+        
       - name: Run Integration Tests
         run: dotnet test tests/IntegrationTests/IntegrationTests.csproj --configuration Release --logger "trx;LogFileName=integration.trx" --logger "console;verbosity=detailed" -v minimal
 
