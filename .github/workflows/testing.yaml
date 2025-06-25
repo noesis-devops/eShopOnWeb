@@ -8,7 +8,7 @@ jobs:
     runs-on: windows-ra
     steps:
       - name: build
-      - run: echo "Building application..."
+        run: echo "Building application..."
   test:
     runs-on: windows-ra
     needs: build
