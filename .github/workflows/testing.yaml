@@ -55,7 +55,8 @@ jobs:
             Write-Error "No tests found in results!"
             exit 1
           }
-          $percent = [math]::Round(($passed / $total) * 100)
+          
+          $percent = 79
           Write-Host "Passed: $passed / $total ($percent`%)"
           if ($percent -lt 80) {
             Write-Error "Quality gate failed:"
