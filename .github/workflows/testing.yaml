@@ -26,6 +26,9 @@ jobs:
 
       - name: Run Public API Integration Tests (ignorar conflitos de pacote)
         run: dotnet test tests/PublicApiIntegrationTests/PublicApiIntegrationTests.csproj --configuration Release --logger "trx;LogFileName=publicapi.trx" --logger "console;verbosity=detailed" -v minimal
+
+      - name: Run E2E tests (LoginTest and ProductTest)
+        run: mvn -B test -Dtest="e2e.tests.LoginTest,e2e.tests.ProductTest"
         
   deploy:
     runs-on: windows-ra
