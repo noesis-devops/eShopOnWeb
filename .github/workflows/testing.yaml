@@ -17,9 +17,8 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Build Functional Tests
-        run: dotnet build tests/FunctionalTests/FunctionalTests.csproj --configuration Release
-
- 
+        run: dotnet build tests/FunctionalTests/FunctionalTests.csproj --configuration Release -p:NoWarn=NU1605
+        
       - name: Run Unit Tests
         run: dotnet test tests/UnitTests/UnitTests.csproj --configuration Release --no-build --logger "trx;LogFileName=unit.trx"
  
