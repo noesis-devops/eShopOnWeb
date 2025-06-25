@@ -15,6 +15,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        
+      - name: Build Functional Tests
+        run: dotnet build tests/FunctionalTests/FunctionalTests.csproj --configuration Release
+
  
       - name: Run Unit Tests
         run: dotnet test tests/UnitTests/UnitTests.csproj --configuration Release --no-build --logger "trx;LogFileName=unit.trx"
