@@ -75,12 +75,19 @@ public class ProductPage {
     public void applyFilter() {
         page.click(SUBMIT_FILTER);
     }
-
+    
     @Step("Assert filtered product")
+    public void assertFilteredProduct(String product) {
+        Locator locator = page.locator(FILTERED_PRODUCT);
+        assertThat(locator.isVisible()).isTrue();
+        assertThat(locator.innerText()).isEqualToIgnoringCase(product);
+    }
+    
+    /*@Step("Assert filtered product")
     public void assertFilteredProduct(String product) {
         page.locator(FILTERED_PRODUCT).isVisible();
         assertThat(page.locator(FILTERED_PRODUCT).innerText()).isEqualTo(product);
-    }
+    }*/
 
     @Step("Acessar homepage")
     public void navigate() {
