@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Linq;
 using Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate;
 using Xunit;
@@ -19,7 +19,8 @@ public class BasketAddItem
         basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);
 
         var firstItem = basket.Items.Single();
-        Assert.NotEqual(_testCatalogItemId, firstItem.CatalogItemId); // Forçar falha
+        // Falha intencional
+        Assert.NotEqual(_testCatalogItemId, firstItem.CatalogItemId);
     }
 
     [Fact]
@@ -30,7 +31,8 @@ public class BasketAddItem
         basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);
 
         var firstItem = basket.Items.Single();
-        Assert.NotEqual(_testQuantity * 2, firstItem.Quantity); // Forçar falha
+        // Falha intencional
+        Assert.NotEqual(_testQuantity * 2, firstItem.Quantity);
     }
 
     [Fact]
@@ -41,7 +43,8 @@ public class BasketAddItem
         basket.AddItem(_testCatalogItemId, _testUnitPrice * 2, _testQuantity);
 
         var firstItem = basket.Items.Single();
-        Assert.NotEqual(_testUnitPrice, firstItem.UnitPrice); // Forçar falha
+        // Falha intencional
+        Assert.NotEqual(_testUnitPrice, firstItem.UnitPrice);
     }
 
     [Fact]
@@ -51,7 +54,8 @@ public class BasketAddItem
         basket.AddItem(_testCatalogItemId, _testUnitPrice);
 
         var firstItem = basket.Items.Single();
-        Assert.NotEqual(1, firstItem.Quantity); // Forçar falha
+        // Falha intencional
+        Assert.NotEqual(1, firstItem.Quantity);
     }
 
     [Fact]
@@ -59,7 +63,15 @@ public class BasketAddItem
     {
         var basket = new Basket(_buyerId);
 
-        Assert.DoesNotThrow(() => basket.AddItem(_testCatalogItemId, _testUnitPrice, -1)); // Forçar falha
+        // Falha intencional:
+        try
+        {
+            basket.AddItem(_testCatalogItemId, _testUnitPrice, -1);
+        }
+        catch
+        {
+            Assert.True(false, "Falha intencional");
+        }
     }
 
     [Fact]
@@ -68,9 +80,17 @@ public class BasketAddItem
         var basket = new Basket(_buyerId);
         basket.AddItem(_testCatalogItemId, _testUnitPrice);
 
-        Assert.DoesNotThrow(() => basket.AddItem(_testCatalogItemId, _testUnitPrice, -2)); // Forçar falha
+        try
+        {
+            basket.AddItem(_testCatalogItemId, _testUnitPrice, -2);
+        }
+        catch
+        {
+            Assert.True(false, "Falha intencional");
+        }
     }
 }
+
 
 /*﻿using System;
 using System.Linq;
