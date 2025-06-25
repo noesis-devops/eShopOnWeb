@@ -1,0 +1,9 @@
+{
+  "local_url": "http://localhost:3000",
+  "remote_url": "https://serverest.dev",
+  "local_eshop": "http://10.255.0.150:32022",
+  "remote_eshop": "http://10.255.0.150:32022",
+  "eShopUserAdmin": "admin@microsoft.com",
+  "eShopPassword": "Pass@word1",
+  "headlessMode": false
+}
