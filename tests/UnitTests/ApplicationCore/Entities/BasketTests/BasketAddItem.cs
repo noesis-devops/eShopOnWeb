@@ -1,4 +1,4 @@
-/*﻿﻿﻿using System;
+using System;
 using System.Linq;
 using Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate;
 using Xunit;
@@ -72,9 +72,9 @@ public class BasketAddItem
 
         Assert.Throws<ArgumentOutOfRangeException>(() => basket.AddItem(_testCatalogItemId, _testUnitPrice, -2));
     }
-} */
+} 
 
-
+/*
 using System;
 using System.Linq;
 using Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate;
@@ -167,4 +167,4 @@ public class BasketAddItem
         }
     }
 }
-
+*/
