@@ -4,9 +4,15 @@ on:
     branches:
       - TST
 jobs:
-  build-and-test:
+  build:
     runs-on: windows-ra
- 
+    steps:
+      - name: build
+      - run: echo "Building application..."
+  test:
+    runs-on: windows-ra
+    needs: build
+    if: success()
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -52,7 +58,7 @@ jobs:
           $percent = [math]::Round(($passed / $total) * 100)
           Write-Host "Passed: $passed / $total ($percent`%)"
           if ($percent -lt 180) {
-            Write-Error "Quality gate failed: less than 80% tests passed."
+            Write-Error "Quality gate failed:"
             exit 1
           }
       
@@ -61,7 +67,7 @@ jobs:
         
   deploy:
     runs-on: windows-ra
-    needs: build-and-test
+    needs: test
     if: success()
     steps:
       - name: Deploy step
