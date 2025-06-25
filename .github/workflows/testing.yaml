@@ -38,9 +38,9 @@ jobs:
       - name: Parse test results and enforce quality gate
         shell: powershell
         run: |
-          $files = Get-ChildItem -Path . -Filter *.trx -Recurse
+          $files = Get-ChildItem -Path . -Filter unit.trx -Recurse
           if ($files.Count -eq 0) {
-            Write-Error "No test result files found!"
+            Write-Error "Unit test result file not found!"
             exit 1
           }
           $passed = 0
@@ -62,6 +62,7 @@ jobs:
             Write-Error "Quality gate failed: Under 80% Passed"
             exit 1
           }
+
       
 
   deploy:
