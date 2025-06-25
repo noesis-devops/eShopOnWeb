@@ -19,23 +19,11 @@ jobs:
 
       - name: build maven
         run: mvn -B compile --file pom.xml
-
-      - name: Run Functional Tests
-        run: dotnet test tests/FunctionalTests/FunctionalTests.csproj --configuration Release --logger "trx;LogFileName=functional.trx" --logger "console;verbosity=detailed" -v minimal
         
       - name: Run Unit Tests
         run: dotnet test tests/UnitTests/UnitTests.csproj --configuration Release --logger "trx;LogFileName=unit.trx" --logger "console;verbosity=detailed" -v minimal
         continue-on-error: true
         
-      - name: Run Integration Tests
-        run: dotnet test tests/IntegrationTests/IntegrationTests.csproj --configuration Release --logger "trx;LogFileName=integration.trx" --logger "console;verbosity=detailed" -v minimal
-
-      - name: Run Public API Integration Tests (ignorar conflitos de pacote)
-        run: dotnet test tests/PublicApiIntegrationTests/PublicApiIntegrationTests.csproj --configuration Release --logger "trx;LogFileName=publicapi.trx" --logger "console;verbosity=detailed" -v minimal
-
-      - name: Run E2E tests (LoginTest and ProductTest)
-        run: mvn -B test -Dtest="e2e.tests.LoginTest,e2e.tests.ProductTest"
-
       - name: Parse test results and enforce quality gate
         shell: powershell
         run: |
@@ -63,8 +51,18 @@ jobs:
             Write-Error "Quality gate failed: Under 90% Passed"
             exit 1
           }
+        
+      - name: Run Functional Tests
+        run: dotnet test tests/FunctionalTests/FunctionalTests.csproj --configuration Release --logger "trx;LogFileName=functional.trx" --logger "console;verbosity=detailed" -v minimal
+        
+      - name: Run Integration Tests
+        run: dotnet test tests/IntegrationTests/IntegrationTests.csproj --configuration Release --logger "trx;LogFileName=integration.trx" --logger "console;verbosity=detailed" -v minimal
 
-      
+      - name: Run Public API Integration Tests (ignorar conflitos de pacote)
+        run: dotnet test tests/PublicApiIntegrationTests/PublicApiIntegrationTests.csproj --configuration Release --logger "trx;LogFileName=publicapi.trx" --logger "console;verbosity=detailed" -v minimal
+
+      - name: Run E2E tests (LoginTest and ProductTest)
+        run: mvn -B test -Dtest="e2e.tests.LoginTest,e2e.tests.ProductTest"
 
   deploy:
     runs-on: windows-ra
