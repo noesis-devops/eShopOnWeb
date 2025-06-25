@@ -32,9 +32,7 @@ jobs:
       - name: Parse test results and enforce quality gate
         shell: powershell
         run: |
-          Set-Location -Path "TestResults"
-          Write-Host "Current directory: $(Get-Location)"
-          $files = Get-ChildItem *.trx
+          $files = Get-ChildItem -Path . -Filter *.trx -Recurse
           if ($files.Count -eq 0) {
             Write-Error "No test result files found!"
             exit 1
@@ -57,6 +55,7 @@ jobs:
             Write-Error "Quality gate failed: less than 80% tests passed."
             exit 1
           }
+      
 
 
         
