@@ -29,10 +29,11 @@ jobs:
       - name: Run E2E tests (LoginTest and ProductTest)
         run: mvn -B test -Dtest="e2e.tests.LoginTest,e2e.tests.ProductTest"
 
-      - name: Parse test results and enforce quality gate (PowerShell)
+      - name: Parse test results and enforce quality gate
         shell: powershell
-        working-directory: ./TestResults
         run: |
+          Set-Location -Path "TestResults"
+          Write-Host "Current directory: $(Get-Location)"
           $files = Get-ChildItem *.trx
           if ($files.Count -eq 0) {
             Write-Error "No test result files found!"
@@ -51,11 +52,12 @@ jobs:
             exit 1
           }
           $percent = [math]::Round(($passed / $total) * 100)
-          Write-Host "Passed: $passed / $total ($percent%)"
+          Write-Host "Passed: $passed / $total ($percent`%)"
           if ($percent -lt 80) {
             Write-Error "Quality gate failed: less than 80% tests passed."
             exit 1
           }
+
 
         
   deploy:
