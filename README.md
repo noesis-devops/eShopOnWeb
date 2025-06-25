@@ -5,7 +5,6 @@
 [![Vulnerabilities](https://nominally-game-wolf.ngrok-free.app/api/project_badges/measure?project=noesis-devops_eShopOnWeb_3808a8f2-827e-4428-a803-22ff9b2ddf17&metric=vulnerabilities&token=sqb_5327fd380f8c7a06ca202587f1ea13680de90b1e)](https://nominally-game-wolf.ngrok-free.app/dashboard?id=noesis-devops_eShopOnWeb_3808a8f2-827e-4428-a803-22ff9b2ddf17)
 [![Technical Debt](https://nominally-game-wolf.ngrok-free.app/api/project_badges/measure?project=noesis-devops_eShopOnWeb_3808a8f2-827e-4428-a803-22ff9b2ddf17&metric=sqale_index&token=sqb_5327fd380f8c7a06ca202587f1ea13680de90b1e)](https://nominally-game-wolf.ngrok-free.app/dashboard?id=noesis-devops_eShopOnWeb_3808a8f2-827e-4428-a803-22ff9b2ddf17)
 
-
 # Microsoft eShopOnWeb ASP.NET Core Reference Application
 
 Sample ASP.NET Core reference application, powered by Microsoft, demonstrating a single-process (monolithic) application architecture and deployment model. If you're new to .NET development, read the [Getting Started for Beginners](https://github.com/dotnet-architecture/eShopOnWeb/wiki/Getting-Started-for-Beginners) guide.
