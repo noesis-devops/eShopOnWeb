@@ -1,0 +1,48 @@
+name: .NET Tests
+ 
+on:
+  push:
+    branches:
+      - TST
+  # pull_request:
+  #  branches:
+  #    - main
+ 
+jobs:
+  build-and-test:
+    runs-on: windows-ra
+ 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+ 
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+ 
+      - name: Restore dependencies
+        run: dotnet restore
+ 
+      - name: Build project
+        run: dotnet build --configuration Release
+ 
+      - name: Run Unit Tests
+        run: dotnet test tests/UnitTests/UnitTests.csproj --configuration Release --no-build --logger "trx;LogFileName=unit.trx"
+ 
+      - name: Run Integration Tests
+        run: dotnet test tests/IntegrationTests/IntegrationTests.csproj --configuration Release --no-build --logger "trx;LogFileName=integration.trx"
+ 
+      - name: Run Functional Tests
+        run: dotnet test tests/FunctionalTests/FunctionalTests.csproj --configuration Release --no-build --logger "trx;LogFileName=functional.trx"
+ 
+      - name: Run Public API Integration Tests
+        run: dotnet test tests/PublicApiIntegrationTests/PublicApiIntegrationTests.csproj --configuration Release --no-build --logger "trx;LogFileName=publicapi.trx"
+ 
+  deploy:
+    runs-on: windows-ra
+    needs: build-and-test
+    if: success()
+    steps:
+      - name: Deploy step
+        run: echo "Deploying application..."
