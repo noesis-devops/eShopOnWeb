@@ -57,7 +57,7 @@ jobs:
           }
           $percent = [math]::Round(($passed / $total) * 100)
           Write-Host "Passed: $passed / $total ($percent`%)"
-          if ($percent -lt 180) {
+          if ($percent -lt 80) {
             Write-Error "Quality gate failed:"
             exit 1
           }
