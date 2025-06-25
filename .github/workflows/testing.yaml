@@ -12,6 +12,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: build maven
+        run: mvn -B compile --file pom.xml
+
       - name: Run Functional Tests
         run: dotnet test tests/FunctionalTests/FunctionalTests.csproj --configuration Release --logger "trx;LogFileName=functional.trx" --logger "console;verbosity=detailed" -v minimal
         
