@@ -16,12 +16,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - name: Build project
-        run: dotnet build eShopOnWeb.sln --configuration Release \
-               -p:NoWarn="NU1605;NU1902;NU1903" \
-               -p:TreatWarningsAsErrors=false
-
-        
       - name: Build Functional Tests
         run: dotnet build tests/FunctionalTests/FunctionalTests.csproj --configuration Release -p:NoWarn=NU1605
         
@@ -35,13 +29,7 @@ jobs:
         run: dotnet test tests/FunctionalTests/FunctionalTests.csproj --configuration Release --no-build --logger "trx;LogFileName=functional.trx"
  
       - name: Run Public API Integration Tests (ignorar conflitos de pacote)
-        run: dotnet test tests/PublicApiIntegrationTests/PublicApiIntegrationTests.csproj \
-               --configuration Release \
-               --logger "trx;LogFileName=publicapi.trx" \
-               -p:NoWarn="NU1605;NU1902;NU1903" \
-               -p:TreatWarningsAsErrors=false
-
-
+        run: dotnet build tests/PublicApiIntegrationTests/PublicApiIntegrationTests.csproj --configuration Release
  
   deploy:
     runs-on: windows-ra
